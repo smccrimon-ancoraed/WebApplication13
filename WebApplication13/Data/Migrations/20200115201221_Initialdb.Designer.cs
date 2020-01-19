@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using WebApplication13.Data;
 
 namespace WebApplication13.Data.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20200115201221_Initialdb")]
+    partial class Initialdb
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -184,21 +186,6 @@ namespace WebApplication13.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("WebApplication13.Models.Film_text", b =>
-                {
-                    b.Property<short>("Film_id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Description");
-
-                    b.Property<string>("Title");
-
-                    b.HasKey("Film_id");
-
-                    b.ToTable("Film_text");
-                });
-
             modelBuilder.Entity("WebApplication13.Models.Rental", b =>
                 {
                     b.Property<int>("Rental_id")
@@ -213,9 +200,9 @@ namespace WebApplication13.Data.Migrations
 
                     b.Property<DateTime>("Rental_date");
 
-                    b.Property<DateTime?>("Return_date");
+                    b.Property<DateTime>("Return_date");
 
-                    b.Property<byte>("Staff_id");
+                    b.Property<short>("Staff_id");
 
                     b.HasKey("Rental_id");
 

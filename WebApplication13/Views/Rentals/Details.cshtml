@@ -1,0 +1,60 @@
+﻿@model WebApplication13.Models.Rental
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Rental</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Rental_id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Rental_id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Rental_date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Rental_date)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Inventory_id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Inventory_id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Customer_id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Customer_id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Return_date)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Return_date)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Staff_id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Staff_id)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Last_update)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Last_update)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.Rental_id">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
