@@ -104,6 +104,8 @@ namespace WebApplication13.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Rental_id,Rental_date,Inventory_id,Customer_id,Return_date,Staff_id,Last_update")] Rental rental)
         {
+            DateTime tmpdate = DateTime.Now; // DataTime.Today returns the date.  DateTime.UTCNow.Date
+
             if (id != rental.Rental_id)
             {
                 return NotFound();
@@ -113,6 +115,8 @@ namespace WebApplication13.Controllers
             {
                 try
                 {
+                    rental.Last_update = tmpdate;
+                //    rental.Last_update = DateTime.UtcNow;
                     _context.Update(rental);
                     await _context.SaveChangesAsync();
                 }
