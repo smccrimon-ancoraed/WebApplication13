@@ -45,7 +45,17 @@ namespace WebApplication13
                 .AddDefaultUI(UIFramework.Bootstrap4)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
-  
+            /*
+             *  For Development, we ignore this setting, we can either Set the EmailConfirmed field=1 (Confirmed)
+             *  Or we can remove the code , so this is not even checked.
+             
+Configuration.GetConnectionString("DefaultConnection")));
+    services.AddDefaultIdentity<IdentityUser>(
+                  options => options.SignIn.RequireConfirmedAccount = true)
+                  // .RequiredConfirmedccount = false;
+        .AddEntityFrameworkStores<ApplicationDbContext>(); 
+        
+            */
 
             //Added security Policy - Required Administrator priviledge
             // Added security Police - Manager and BackupAdmin as Supervisor Role
