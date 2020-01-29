@@ -11,6 +11,7 @@ using WebApplication13.Models;
 
 namespace WebApplication13.Controllers
 {
+    // [AllowAnonymous]
     [Authorize]
     public class RentalsController : Controller
     {
