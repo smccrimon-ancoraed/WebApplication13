@@ -106,11 +106,12 @@ namespace WebApplication13.Controllers
             {
                 return NotFound();
             }
-
+            DateTime tmpdate = DateTime.Now;  // Get the current date-timestamp
             if (ModelState.IsValid)
             {
                 try
                 {
+                    actor.Last_update = tmpdate;
                     _context.Update(actor);
                     await _context.SaveChangesAsync();
                 }
