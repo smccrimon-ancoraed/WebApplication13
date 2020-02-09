@@ -36,8 +36,16 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
                         </li>
                         <li class="nav-item">
-                            @Html.ActionLink("Rental Maintenance","Index","Rentals",null,new { @class="nav-link text-dark"})
+                            @Html.ActionLink("Rental Maintenance", "Index", "Rentals", null, new { @class = "nav-link text-dark" })
                         </li>
+
+                        @* Display page if user is in the Role, Special menu for Administrators  *@
+                        @if (User.IsInRole("Administrator"))
+                        {
+                            <li class="nav-item">
+                                @Html.ActionLink("Customer Master", "Index", "Customers", null, new { @class = "nav-link text-dark" })
+                            </li>
+                        }
 
                     </ul>
                 </div>
