@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -10,6 +11,7 @@ using WebApplication13.Models;
 
 namespace WebApplication13.Controllers
 {
+    [Authorize]
     public class ActorsController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -27,8 +29,7 @@ namespace WebApplication13.Controllers
            if (!String.IsNullOrEmpty(searchString))
             {
                 actor = actor.Where(a => a.First_name.Contains(searchString)
-                || a.Last_name.Contains(searchString))
-                ;
+                || a.Last_name.Contains(searchString));
                 //Logical operator !! = OR     && = AND   ! = NOT
             }
 
@@ -80,6 +81,7 @@ namespace WebApplication13.Controllers
         }
 
         // GET: Actors/Edit/5
+        [Authorize(Roles = "Administrator, Manager")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -98,6 +100,7 @@ namespace WebApplication13.Controllers
         // POST: Actors/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [Authorize(Roles = "Administrator, Manager")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("Actor_id,First_name,Last_name,Last_update")] Actor actor)
@@ -131,6 +134,7 @@ namespace WebApplication13.Controllers
             return View(actor);
         }
 
+        [Authorize(Policy = "RequireAdministratorRole")]
         // GET: Actors/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
@@ -150,6 +154,7 @@ namespace WebApplication13.Controllers
         }
 
         // POST: Actors/Delete/5
+        [Authorize(Policy = "RequireAdministratorRole")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

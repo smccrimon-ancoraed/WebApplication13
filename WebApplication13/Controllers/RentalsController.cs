@@ -138,7 +138,7 @@ namespace WebApplication13.Controllers
         }
 
         // GET: Rentals/Delete/5
-        // [Authorize(Roles = "Administrator, Manager")]
+        // [Authorize(Roles = "Administrator")]
         [Authorize(Policy = "RequireAdministratorRole")]
         public async Task<IActionResult> Delete(int? id)
         {

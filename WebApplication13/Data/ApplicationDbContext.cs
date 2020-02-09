@@ -16,5 +16,6 @@ namespace WebApplication13.Data
         public DbSet<WebApplication13.Models.Rental> Rental { get; set; }
         public DbSet<WebApplication13.Models.Film_text> Film_text { get; set; }
         public DbSet<WebApplication13.Models.Actor> Actor { get; set; }
+        public DbSet<WebApplication13.Models.Customer> Customer { get; set; }
     }
 }
