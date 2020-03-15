@@ -1,5 +1,6 @@
 ﻿@model IEnumerable<WebApplication13.Models.Actor>
 
+
 @{
     ViewData["Title"] = "Index";
 }
@@ -8,10 +9,14 @@
 
 <p>
     <a asp-action="Create">Create New</a>
+    <h3>@User.Identity.Name is logged in </h3>
+    <h3>@{}</h3>
 </p>
+
 
 <form asp-controller="Actors" asp-action="Index" method="get">
     <p>
+
         Search by First or Last name: <input type="text" name="searchString">
         <input type="submit" value="Filter" />
     </p>

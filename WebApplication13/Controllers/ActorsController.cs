@@ -8,26 +8,48 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using WebApplication13.Data;
 using WebApplication13.Models;
+using Microsoft.AspNetCore.Identity;
+using System.Security.Claims;
+
+using Microsoft.AspNetCore.Http;
+
 
 namespace WebApplication13.Controllers
 {
     [Authorize]
     public class ActorsController : Controller
     {
+
         private readonly ApplicationDbContext _context;
+
+      //  string _myuser = this.User.Identity.Name;
+      
 
         public ActorsController(ApplicationDbContext context)
         {
             _context = context;
         }
 
+
         // Search by First or Last name
         public async  Task<IActionResult> Index(string searchString)
-        {      
+        {
+            //  ApplicationDbContext dbcurr = new ApplicationDbContext();
+            //var _userId = dbcurr.Users..AspNetUsers.FirstOrDefault(u => u.Id == TableName.ApsNetUserId);
+
+      
+
            var actor = from m in _context.Actor select m;
+                                                                                                                                                                                                                           
+            string _name = User.Identity.Name;
+            string _nameId = new ApplicationUser().Id;
+            string _nameUser = new ApplicationUser().UserName;
+
             
-           if (!String.IsNullOrEmpty(searchString))
+            // searchString = _name;
+            if (!String.IsNullOrEmpty(searchString))
             {
+                
                 actor = actor.Where(a => a.First_name.Contains(searchString)
                 || a.Last_name.Contains(searchString));
                 //Logical operator !! = OR     && = AND   ! = NOT
@@ -35,6 +57,9 @@ namespace WebApplication13.Controllers
 
             return View(await actor.ToListAsync());
         }
+
+
+        
 
 
         // GET: Actors/Details/5

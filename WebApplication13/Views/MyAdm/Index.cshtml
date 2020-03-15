@@ -1,0 +1,18 @@
+﻿@model WebApplication13.Models.ApplicationUser;
+@{
+    ViewData["Title"] = "My Admin Section";
+}
+
+<h1>Admin Section</h1>
+
+<div class="row">
+    <div class="col-md-12">
+        <form method="post">
+            <div class="form-group">
+                <label asp-for="UserName"/>
+                <input asp-for="UserName" class="form-control" />
+            </div>
+        </form>
+    </div>
+</div>
+
